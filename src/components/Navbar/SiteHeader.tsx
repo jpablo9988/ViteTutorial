@@ -3,11 +3,9 @@ import MainNav from './MainNav';
 import MobileNav from './MobileNav';
 export default function SiteHeader() {
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
-      <div className="flex h-18 items-center px-4">
+    <header className="sticky flex h-20 w-full shrink-0 items-center px-4 md:px-6 border-b bg-white dark:border-gray-800 dark:bg-gray-950">
         <MainNav />
         <MobileNav />
-      </div>
     </header>
   );
 }
