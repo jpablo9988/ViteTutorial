@@ -16,8 +16,8 @@ import { Input } from '../ui/input';
 
 export default function MainNav() {
     return (
-        <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-            <Link to="/" className="flex items-center gap-2">
+        <div className="container flex h-16 w-full items-center justify-between px-2 md:px-6">
+            <Link to="/" className="items-start">
                 <img className="h-14 w-16" src={COLLabLogo}></img>
             </Link>
             <div className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -73,7 +73,7 @@ export default function MainNav() {
                             <Input type="search" placeholder="Search..." className="pl-8 w-full" />
                         </div>
                     </DropdownMenuContent>
-                </DropdownMenu>
+            </DropdownMenu>
         </div>
     );
 }
