@@ -13,8 +13,23 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { SearchIcon } from 'lucide-react';
 import { Input } from '../ui/input';
+import { useState } from 'react';
+import ResultsList from '../searchBar/resultsList';
+import MobileNav from './MobileNav';
+
 
 export default function MainNav() {
+    const [inputText, setInputText] = useState("");
+    const inputManager = (e: { target: { value: string; }; }) =>
+    {
+        // to lower case
+        const lowerCase = e.target.value.toLowerCase();
+        setInputText(lowerCase);
+    }
+    const inputReset=()=>
+    {
+        setInputText("");
+    }
     return (
         <div className="container flex h-16 w-full items-center justify-between px-2 md:px-6">
             <Link to="/" className="items-start">
@@ -60,20 +75,29 @@ export default function MainNav() {
                 </NavigationMenu>
 
             </div>
-            <DropdownMenu>
+            <div className="flex items-center gap-4">
+            <MobileNav />
+            <DropdownMenu onOpenChange={inputReset}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon" className="rounded-full">
                             <SearchIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
                             <span className="sr-only">Search</span>
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-[300px] p-4">
+                    <DropdownMenuContent className="w-[270px] p-4">
                         <div className="relative">
                             <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                            <Input type="search" placeholder="Search..." className="pl-8 w-full" />
+                            <Input type="search" 
+                            placeholder="Search..." 
+                            onChange={inputManager}
+                            className="pl-8 w-full" />
+                        </div>
+                        <div className = "relative w-full">
+                            <ResultsList input={inputText}></ResultsList>
                         </div>
                     </DropdownMenuContent>
             </DropdownMenu>
+            </div>
         </div>
     );
 }

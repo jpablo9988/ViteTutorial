@@ -24,7 +24,7 @@ export default function MobileNav() {
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="right">
+      <SheetContent side="right" className="w-[240px] sm:w-[240px]">
         <div className="flex flex-col items-start">
           <Button variant="link"
             onClick={() => {
@@ -40,7 +40,7 @@ export default function MobileNav() {
           </Button>
           <Accordion type="single" collapsible className="text-left w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>Dropdown Menu</AccordionTrigger>
+              <AccordionTrigger className='items-center'>Dropdown Menu</AccordionTrigger>
               <AccordionContent>
                 <ul className='grid-cols-1 gap-1 p-4'>
                   <li >
